@@ -1,2 +1,3 @@
+include ':datastructure'
 include ':app'
 rootProject.name = "DataStructure"
