@@ -1,6 +1,7 @@
 package com.example.datastructure.linkedlist;
 
 import java.awt.GraphicsConfigTemplate;
+import java.util.Stack;
 
 /**
  * 链表
@@ -196,6 +197,29 @@ public class SingleLinkedList {
 
             //将head.next指向reverseHead.next
             head.next = reverseHead.next;
+        }
+    }
+
+    /**
+     * 逆序打印单链表
+     * 方式1：先将单链表反转，然后打印 （问题：会破坏原来的单链表结构顺序）
+     * 方式2：可以利用栈这个数据结构，将各个节点压入栈中，然后利用栈的先进后出特点，实现逆序打印
+     */
+    public void reversePrintByStack(HeroNode head) {
+        HeroNode temp = head.next;
+        if (temp != null) {
+            Stack<HeroNode> stack = new Stack<>();
+
+            while (temp != null) {
+                stack.add(temp);
+                temp = temp.next;
+            }
+
+            while (stack.size() > 0) {
+                System.out.println(stack.pop().toString());
+            }
+        } else {
+            System.out.println("链表空！");
         }
     }
 

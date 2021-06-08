@@ -22,14 +22,16 @@ public class SingleLinkedListDemo {
 //        linkedList.update(node4);
 //        linkedList.delete(node4);
 
-        linkedList.showList();
+//        linkedList.showList();
 //        int length = linkedList.getLength();
 //        System.out.println("链表长度：" + length);
 //        linkedList.findLastIndexNode(1);
 
-        linkedList.revertList(linkedList.getHead());
-        System.out.println("链表反转：");
-        linkedList.showList();
+//        linkedList.revertList(linkedList.getHead());
+//        System.out.println("链表反转：");
+//        linkedList.showList();
+
+        linkedList.reversePrintByStack(linkedList.getHead());
 
     }
 }
