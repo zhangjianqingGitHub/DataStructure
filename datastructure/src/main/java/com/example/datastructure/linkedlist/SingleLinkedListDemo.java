@@ -17,15 +17,19 @@ public class SingleLinkedListDemo {
         linkedList.addByOrder(node3);
         linkedList.addByOrder(node2);
         linkedList.addByOrder(node2);
-
-        HeroNode node4 = new HeroNode(2, "小张", "666");
-        linkedList.update(node4);
-
-        linkedList.delete(node4);
+//
+//        HeroNode node4 = new HeroNode(2, "小张", "666");
+//        linkedList.update(node4);
+//        linkedList.delete(node4);
 
         linkedList.showList();
-        int length = linkedList.getLength();
-        System.out.println("链表长度：" + length);
-        linkedList.getNode(1);
+//        int length = linkedList.getLength();
+//        System.out.println("链表长度：" + length);
+//        linkedList.findLastIndexNode(1);
+
+        linkedList.revertList(linkedList.getHead());
+        System.out.println("链表反转：");
+        linkedList.showList();
+
     }
 }

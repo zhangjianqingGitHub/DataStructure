@@ -1,5 +1,7 @@
 package com.example.datastructure.linkedlist;
 
+import java.awt.GraphicsConfigTemplate;
+
 /**
  * 链表
  * 1. 链表是以节点的方式来存储
@@ -11,6 +13,9 @@ public class SingleLinkedList {
 
     private final HeroNode head = new HeroNode(0, "", "");//初始化头节点，不动
 
+    public HeroNode getHead() {
+        return head;
+    }
 
     // 添加（创建）-无序
     // 1. 先创建一个head头节点，作用:表示单链表的头
@@ -141,7 +146,7 @@ public class SingleLinkedList {
      *
      * @return
      */
-    public HeroNode getNode(int k) {
+    public HeroNode findLastIndexNode(int k) {
         if (getLength() - k <= 0 || head.next == null) {
             System.out.println("重新指定：" + k + "-" + getLength());
             return null;
@@ -168,6 +173,30 @@ public class SingleLinkedList {
 
         }
 
+    }
+
+    /**
+     * 将单链表反转
+     */
+    public void revertList(HeroNode head) {
+        if (head.next != null && head.next.next != null) {
+
+            HeroNode temp = head.next;
+            HeroNode next = null; //指向当前节点的下一个节点
+            HeroNode reverseHead = new HeroNode(0, "", "");
+
+            //遍历原来的链表,每遍历一个节点，就放在新链表的最前端
+
+            while (temp != null) {
+                next = temp.next;// 先暂时保存当前节点的下一个节点
+                temp.next = reverseHead.next;//将temp的下一个节点指向新的链表的头部
+                reverseHead.next = temp; // 将temp链接到新的链表上
+                temp = next; //temp后移
+            }
+
+            //将head.next指向reverseHead.next
+            head.next = reverseHead.next;
+        }
     }
 
 
