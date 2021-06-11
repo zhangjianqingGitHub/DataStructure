@@ -13,6 +13,11 @@ public class Josephu {
         linkedList.addBoy(5);
 
         linkedList.showBoy();
+        System.out.println();
+
+        System.out.println("开始出圈！");
+
+        linkedList.countBoy(1, 2, 5);
     }
 }
 
@@ -70,6 +75,53 @@ class CircleSingleLinkedList {
             }
 
         }
+    }
+
+    /**
+     * 1. 需要创建一个辅助指针 helper,指向环形链表的最后一个节点（指向 5 ）
+     * 2. 报数前，先让first 和 helper 移动 start-1 次，因为从那个小孩开始报数
+     * 3. 当小孩报数时，让 first 和 helper 同时移动 count-1 次
+     * 4. 将first指向的小孩节点出圈  first=first.next ;helper.next=first
+     *
+     * @param start 表示从第几个小孩开始数
+     * @param count 表示数几下
+     * @param nums  共有多少小孩
+     */
+    public void countBoy(int start, int count, int nums) {
+
+        if (first == null || start < 1 || start > nums) {
+            System.out.println("参数输入有误！");
+        } else {
+            Boy helper = first;
+            while (helper.getNext() != first) {
+                helper = helper.getNext(); // helper指向最后一个小孩 （5）
+            }
+
+            // 移动到 start 开始位置
+            for (int i = 0; i < start - 1; i++) {
+                first = first.getNext();
+                helper = helper.getNext();
+            }
+
+            // 出圈
+            while (helper != first) { // 出循环时只剩一人
+
+                for (int i = 0; i < count - 1; i++) {
+                    first = first.getNext();
+                    helper = helper.getNext();
+                }
+
+                // 这时 first 指向的节点，就是要出圈的小孩
+                System.out.printf("小孩 %d 出圈\n", first.getNo());
+                first = first.getNext();
+                helper.setNext(first);
+
+            }
+
+            System.out.printf("最后留在圈中的小孩编号是 %d \n", first.getNo());
+
+        }
+
     }
 
 
