@@ -4,26 +4,26 @@ import java.util.Arrays;
 
 /**
  * 1. 十种排序： 冒泡排序、选择排序、插入排序、希尔排序、归并排序、
- * 			快速排序、堆排序、计数排序、桶排序、基数排序
+ * 快速排序、堆排序、计数排序、桶排序、基数排序
  * 2. 稳定性：假定在待排序的记录序列中，存在多个具有相同的关键字的记录
- *          若经过排序，这些记录的相对次序保持不变(相同关键字是关键，例如冒泡排序是稳定的，
- *          因为两个数比较，如果相等则没有必要交换）
+ * 若经过排序，这些记录的相对次序保持不变(相同关键字是关键，例如冒泡排序是稳定的，
+ * 因为两个数比较，如果相等则没有必要交换）
  */
 public class Sort {
 
     public static void main(String[] args) {
 
         int[] arr = {0, 5, 3, 8, 2};
-        quickSort(arr, 0, arr.length - 1);
+        insertSort(arr);
         System.out.println(Arrays.toString(arr));
 
     }
 
     /**
-     快排
-     1. 平均时间复杂度：nlogn ；空间复杂度：logn
-     2. 稳定性：不稳定
-     3. 最坏情况退化成 冒泡排序 （即每次划分都是 n-1 和 1个元素时，退化为冒泡排序）
+     * 快排
+     * 1. 平均时间复杂度：nlogn ；空间复杂度：logn
+     * 2. 稳定性：不稳定
+     * 3. 最坏情况退化成 冒泡排序 （即每次划分都是 n-1 和 1个元素时，退化为冒泡排序）
      */
     public static void quickSort(int[] arr, int low, int high) {
         if (low >= high) {
@@ -58,10 +58,10 @@ public class Sort {
     }
 
     /**
-     冒泡排序
-     1. 平均时间复杂度：n^2  空间复杂度 O(1)
-     2. 稳定性：稳定
-     3. 冒泡，轻的泡浮起来（小的）
+     * 冒泡排序
+     * 1. 平均时间复杂度：n^2  空间复杂度 O(1)
+     * 2. 稳定性：稳定
+     * 3. 冒泡，轻的泡浮起来（小的）
      */
     public static void bubbleSort(int[] arr) {
         if (arr.length == 0) {
@@ -106,6 +106,35 @@ public class Sort {
             int temp = arr[minValueIndex];
             arr[minValueIndex] = arr[i];
             arr[i] = temp;
+        }
+    }
+
+    /**
+     * 插入排序
+     * 1. 平均时间复杂度：O(n^2) ；空间复杂度 O(1)
+     * 2. 稳定性： 稳定
+     * 3. 思路：
+     * * * 1. 从第一个元素开始，该元素可以认为已经被排序
+     * * * 2. 取出下一个元素，在已经排序的元素序列中从后往前扫描
+     * * * 3. 如果该元素（已排序的元素）大于新元素，将该元素移到下一位
+     * * * 4. 重复步骤3，直到找到已排序元素 <= 新元素的位置
+     * * * 5. 将新元素插入到该位置后
+     * * * 6. 重复步骤 2 - 5
+     */
+    public static void insertSort(int[] arr) {
+        if (arr.length == 0) {
+            return;
+        }
+
+        int current;
+        for (int i = 0; i < arr.length - 1; i++) {
+            current = arr[i + 1];
+            int preIndex = i;
+            while (preIndex >= 0 && current < arr[preIndex]) {
+                arr[preIndex + 1] = arr[preIndex];
+                preIndex--;
+            }
+            arr[preIndex + 1] = current;
         }
     }
 
