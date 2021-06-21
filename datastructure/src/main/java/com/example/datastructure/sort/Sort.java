@@ -13,8 +13,8 @@ public class Sort {
 
     public static void main(String[] args) {
 
-        int[] arr = {0, 5, 3, 8, 2};
-        insertSort(arr);
+        int[] arr = {8, 9, 1, 7, 2, 3, 5, 4, 6, 0};
+        shellSort(arr);
         System.out.println(Arrays.toString(arr));
 
     }
@@ -135,6 +135,33 @@ public class Sort {
                 preIndex--;
             }
             arr[preIndex + 1] = current;
+        }
+    }
+
+
+    /**
+     * 希尔排序： 是插入排序的改进版本，本质上也是插入排序
+     * 1. 时间复杂度：O(nlogn) ;空间复杂度
+     * 2. 思路 eg: length=10
+     * * 1. 设置一个增量 gap=length/2=5 ,则从第一个数开始（包括）每数5下的这些数是一组
+     * * 2. 将每组分别进行插入排序
+     * * 3. 当增量为1时，整个序列就是一组，微调后即排序完成
+     */
+    public static void shellSort(int[] arr) {
+        int length = arr.length;
+        int gap = length / 2;
+        int temp;
+        while (gap > 0) {
+            for (int i = gap; i < length; i++) {
+                temp = arr[i];
+                int preIndex = i - gap;
+                while (preIndex >= 0 && arr[preIndex] > temp) {
+                    arr[preIndex + gap] = arr[preIndex];
+                    preIndex -= gap;
+                }
+                arr[preIndex + gap] = temp;
+            }
+            gap /= 2;
         }
     }
 
