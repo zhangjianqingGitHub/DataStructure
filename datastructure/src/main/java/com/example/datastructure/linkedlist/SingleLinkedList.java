@@ -1,6 +1,5 @@
 package com.example.datastructure.linkedlist;
 
-import java.awt.GraphicsConfigTemplate;
 import java.util.Stack;
 
 /**
