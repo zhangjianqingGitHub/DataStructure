@@ -12,10 +12,15 @@ import java.util.Arrays;
 public class Sort {
 
     public static void main(String[] args) {
+        int[] arr = {5, 7, 7, 8, 8, 10};
+        int x1 = recursionBinarySearch(arr, 8, 0, arr.length - 1);
+        System.out.println(x1);
 
-        int[] arr = {8, 9, 1, 7, 2, 3, 5, 4, 6, 0};
-        shellSort(arr);
-        System.out.println(Arrays.toString(arr));
+        int left = commonBinarySearchLeft(arr, 8);
+        int right = commonBinarySearchRight(arr, 8) - 1;
+
+        int[] arr2 = new int[]{left, right};
+        System.out.println(Arrays.toString(arr2));
 
     }
 
@@ -168,6 +173,7 @@ public class Sort {
     /**
      * 二分查找的递归和非递归实现
      * 1. 前提：有序序列
+     * // 第一个等于Key的数
      */
     public static int recursionBinarySearch(int[] arr, int key, int low, int high) {
         if (key < arr[low] || key > arr[high] || low > high) {
@@ -176,35 +182,65 @@ public class Sort {
 
         int middle = (low + high) / 2;
         if (arr[middle] > key) {
-            return recursionBinarySearch(arr, key, low, middle - 1);
+            return recursionBinarySearch(arr, key, low, middle);
         } else if (arr[middle] < key) {
-            return recursionBinarySearch(arr, key, middle + 1, high);
+            return recursionBinarySearch(arr, key, middle, high);
         } else {
             return middle;
         }
     }
 
-    public static int commonBinarySearch(int[] arr, int key) {
+    // 找第一个大于key的数，前一个则时最后一个等于key的数
+    public static int commonBinarySearchRight(int[] arr, int key) {
         int low = 0;
         int high = arr.length - 1;
         int middle;
+        int ans = -1;
 
-        if (key < arr[low] || key > arr[high] || low > high) {
+        if (key < arr[low] || key > arr[high]) {
             return -1;
         }
 
+        //5, 7, 7, 8, 8, 10
         while (low <= high) {
             middle = (low + high) / 2;
             if (key < arr[middle]) {
                 high = middle - 1;
-            } else if (key > arr[middle]) {
-                low = middle + 1;
+                ans = middle;
             } else {
-                return middle;
+                low = middle + 1;
             }
         }
 
-        return -1;
+        return ans;
+    }
+
+    // 找第一个等于key的数
+    public static int commonBinarySearchLeft(int[] arr, int key) {
+        int low = 0;
+        int high = arr.length - 1;
+        int middle = -1;
+        int ans;
+
+        if (key < arr[low] || key > arr[high]) {
+            return -1;
+        }
+
+        //5, 7, 7, 8, 8, 10
+        while (low <= high) {
+            middle = (low + high) / 2;
+            if (key < arr[middle]) {
+                high = middle;
+            } else if (key > arr[middle]) {
+                low = middle;
+            } else {
+                // 找到第一个等于的数，break
+                break;
+            }
+        }
+        ans = middle;
+
+        return ans;
     }
 
 
