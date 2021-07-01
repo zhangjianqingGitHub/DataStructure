@@ -222,6 +222,26 @@ public class SingleLinkedList {
         }
     }
 
+    public boolean haveCircle(HeroNode head) {
+        if (head.next == null) {
+            return false;
+        }
+        // 快慢指针
+        HeroNode temp1 = head;
+        HeroNode temp2 = head.next;
+        boolean haveCircle = false;
+
+        while (temp2 != null) {
+            if (temp1.mNumber == temp2.mNumber) {
+                haveCircle = true;
+                break;
+            }
+            temp1 = temp1.next;
+            temp2 = temp1.next.next;
+        }
+        return haveCircle;
+    }
+
 
 }
 

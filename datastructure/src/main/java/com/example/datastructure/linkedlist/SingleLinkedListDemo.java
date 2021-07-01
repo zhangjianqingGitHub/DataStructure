@@ -8,15 +8,22 @@ public class SingleLinkedListDemo {
         HeroNode node2 = new HeroNode(1, "吴用", "智多星");
         HeroNode node3 = new HeroNode(2, "林冲", "豹子头");
 
-//        linkedList.add(node1);
-//        linkedList.add(node3);
-//        linkedList.add(node2);
-//        linkedList.add(node2);
+        linkedList.add(node1);
+        linkedList.add(node2);
+        linkedList.add(node3);
 
-        linkedList.addByOrder(node1);
-        linkedList.addByOrder(node3);
-        linkedList.addByOrder(node2);
-        linkedList.addByOrder(node2);
+        node1.next=node2;
+        node2.next=node3;
+        node3.next=node1;
+
+        System.out.println(linkedList.haveCircle(linkedList.getHead()));
+
+
+
+//        linkedList.addByOrder(node1);
+//        linkedList.addByOrder(node3);
+//        linkedList.addByOrder(node2);
+//        linkedList.addByOrder(node2);
 //
 //        HeroNode node4 = new HeroNode(2, "小张", "666");
 //        linkedList.update(node4);
@@ -31,7 +38,7 @@ public class SingleLinkedListDemo {
 //        System.out.println("链表反转：");
 //        linkedList.showList();
 
-        linkedList.reversePrintByStack(linkedList.getHead());
+//        linkedList.reversePrintByStack(linkedList.getHead());
 
     }
 }
