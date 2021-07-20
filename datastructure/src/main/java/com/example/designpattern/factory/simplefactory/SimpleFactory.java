@@ -1,9 +1,9 @@
-package com.example.designpattern.factory;
+package com.example.designpattern.factory.simplefactory;
 
-import com.example.designpattern.factory.pizza.CheesePizza;
-import com.example.designpattern.factory.pizza.GreekPizza;
-import com.example.designpattern.factory.pizza.PepperPizza;
-import com.example.designpattern.factory.pizza.Pizza;
+import com.example.designpattern.factory.simplefactory.pizza.CheesePizza;
+import com.example.designpattern.factory.simplefactory.pizza.GreekPizza;
+import com.example.designpattern.factory.simplefactory.pizza.PepperPizza;
+import com.example.designpattern.factory.simplefactory.pizza.Pizza;
 
 //简单工厂类
 public class SimpleFactory {

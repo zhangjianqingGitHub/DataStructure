@@ -1,4 +1,4 @@
-package com.example.designpattern.factory.pizza;
+package com.example.designpattern.factory.factorymethod.pizza;
 
 //将Pizza类做成抽象的
 public abstract class Pizza {

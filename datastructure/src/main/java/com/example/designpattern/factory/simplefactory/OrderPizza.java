@@ -1,7 +1,7 @@
-package com.example.designpattern.factory.order;
+package com.example.designpattern.factory.simplefactory;
 
-import com.example.designpattern.factory.SimpleFactory;
-import com.example.designpattern.factory.pizza.Pizza;
+
+import com.example.designpattern.factory.simplefactory.pizza.Pizza;
 
 /**
  * 订购pizza

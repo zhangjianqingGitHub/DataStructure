@@ -1,6 +1,4 @@
-package com.example.designpattern.factory.pizza;
-
-import com.example.designpattern.factory.order.OrderPizza;
+package com.example.designpattern.factory.simplefactory;
 
 /**
  * 相当于客户端，订购披萨

@@ -1,4 +1,4 @@
-package com.example.designpattern.factory.pizza;
+package com.example.designpattern.factory.simplefactory.pizza;
 
 public class PepperPizza extends Pizza {
     public PepperPizza(String name) {
